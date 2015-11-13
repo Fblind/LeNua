@@ -35,5 +35,9 @@
   "Producto": {
     "dataSource": "db",
     "public": true
+  },
+  "Plato": {
+    "dataSource": "db",
+    "public": true
   }
 }

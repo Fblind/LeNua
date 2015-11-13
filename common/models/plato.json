@@ -1,0 +1,29 @@
+{
+  "name": "Plato",
+  "plural": "platos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Nombre": {
+      "type": "string",
+      "required": true
+    },
+    "unidades": {
+      "type": "number",
+      "required": true
+    },
+    "ingredientes": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
