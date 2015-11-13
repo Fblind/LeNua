@@ -1,0 +1,30 @@
+{
+  "name": "Producto",
+  "plural": "productos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "cantidadEnvasado": {
+      "type": "number",
+      "required": true
+    },
+    "precio": {
+      "type": "number",
+      "required": true
+    },
+    "proveedor": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
