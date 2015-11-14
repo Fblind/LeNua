@@ -39,5 +39,9 @@
   "Plato": {
     "dataSource": "db",
     "public": true
+  },
+  "Ingrediente": {
+    "dataSource": "db",
+    "public": true
   }
 }

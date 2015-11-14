@@ -1,0 +1,25 @@
+{
+  "name": "Ingrediente",
+  "plural": "ingredientes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "medida": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "producto": {
+      "type": "hasOne",
+      "model": "Producto",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
