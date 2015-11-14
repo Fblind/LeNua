@@ -43,5 +43,9 @@
   "Ingrediente": {
     "dataSource": "db",
     "public": true
+  },
+  "Comida": {
+    "dataSource": "db",
+    "public": true
   }
 }
