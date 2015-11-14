@@ -13,7 +13,14 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "platos": {
+      "type": "hasMany",
+      "model": "Plato",
+      "foreignKey": "",
+      "through": "Comestible"
+    }
+  },
   "acls": [],
   "methods": []
 }

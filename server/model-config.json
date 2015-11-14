@@ -47,5 +47,9 @@
   "Comida": {
     "dataSource": "db",
     "public": true
+  },
+  "Comestible": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -10,20 +10,16 @@
     "Nombre": {
       "type": "string",
       "required": true
-    },
-    "unidades": {
-      "type": "number",
-      "required": true
-    },
-    "ingredientes": {
-      "type": [
-        "object"
-      ],
-      "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "ingredientes": {
+      "type": "hasMany",
+      "model": "Ingrediente",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": []
 }
