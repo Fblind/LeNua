@@ -1,0 +1,42 @@
+<div class="menubar fixed">
+  <div class="sidebar-toggler visible-xs">
+    <i class="ion-navicon"></i>
+  </div>
+
+  <div class="page-title">
+    Platos
+  </div>
+  <button ui-sref="altaPlatos" class="new-user btn btn-success pull-right">
+    <span>Agregar plato</span>
+  </button>
+</div>
+
+<div>
+  <table st-table="plato.displayed" st-safe-src="plato.platos" class="table table-striped">
+    <thead>
+    <tr>
+      <th st-sort="nombre">Nombre</th>
+      <th>Acciones</th>
+    </tr>
+    <tr>
+      <th colspan="5"><input st-search="" class="form-control" placeholder="Buscar..." type="text"/></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in plato.displayed">
+      <td editable-text="item.nombre" 
+          e-name="nombre" 
+          e-form="rowform" 
+          e-required>{{item.nombre}}</td>
+      <td style="white-space: nowrap">
+        <div class="buttons">
+          <button class="btn btn-primary">edit</button>
+          <button class="btn btn-danger">del</button>
+        </div>  
+      </td>
+    </tr>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

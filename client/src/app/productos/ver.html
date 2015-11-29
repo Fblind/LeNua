@@ -1,0 +1,63 @@
+<div class="menubar fixed">
+  <div class="sidebar-toggler visible-xs">
+    <i class="ion-navicon"></i>
+  </div>
+
+  <div class="page-title">
+    Productos
+  </div>
+  <button ng-click="producto.agregarProducto()" class="new-user btn btn-success pull-right">
+    <span>Agregar producto</span>
+  </button>
+</div>
+
+<div>
+  <table st-table="producto.displayed" st-safe-src="producto.productos" class="table table-striped">
+    <thead>
+      <tr>
+        <th st-sort="nombre">Nombre</th>
+        <th st-sort="cantidadEnvasado">Cantidad Envasado</th>
+        <th st-sort="precio">Precio</th>
+        <th st-sort="proveedor">Proveedor</th>
+      </tr>
+      <tr>
+        <th colspan="5"><input st-search="" class="form-control" placeholder="Buscar..." type="text"/></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in producto.displayed">
+        <td editable-text="item.nombre" 
+            e-name="nombre" 
+            e-form="rowform" 
+            e-required>{{item.nombre}}</td>
+        <td editable-number="item.cantidadEnvasado" 
+            e-name="cantidadEnvasado" 
+            e-form="rowform" 
+            e-min="0"
+            e-required>{{item.cantidadEnvasado}}</td>
+        <td editable-number="item.precio"
+            e-name="precio" 
+            e-form="rowform" 
+            e-min="0"
+            e-required>{{item.precio}}</td>
+        <td editable-text="item.proveedor" 
+            e-name="nombre" 
+            e-form="rowform">{{item.proveedor}}</td>
+        <td style="white-space: nowrap">
+          <form editable-form name="rowform" onbeforesave="producto.agregar(item)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="producto.insertado === item">
+            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+              save
+            </button>
+            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+              cancel
+            </button>
+          </form>
+          <div class="buttons" ng-show="!rowform.$visible">
+            <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+            <button class="btn btn-danger" ng-click="producto.eliminar(item, $index)">del</button>
+          </div>  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

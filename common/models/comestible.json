@@ -13,7 +13,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "comida": {
+      "type": "belongsTo",
+      "model": "Comida",
+      "foreignKey": ""
+    },
+    "plato": {
+      "type": "belongsTo",
+      "model": "Plato",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": []
 }

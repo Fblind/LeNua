@@ -1,0 +1,78 @@
+<div class="menubar">
+  <div class="sidebar-toggler visible-xs">
+    <i class="ion-navicon"></i>
+  </div>
+
+  <div class="page-title">Agregar un nuevo plato</div>
+
+</div>
+
+<div class="content-wrapper">
+  <div id="new-product" class="form-horizontal" name="plato.agregarForm" novalidate>
+
+    <div class="form-group">
+      <label class="col-sm-2 col-md-2 control-label">Nombre</label>
+      <div class="col-sm-10 col-md-8">
+        <input type="text" class="form-control" ng-model="plato.plato.nombre" name="nombre" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 col-md-2 control-label">Ingredientes</label>
+      <div class="col-sm-10 col-md-8">
+        <button ng-click="plato.agregarNuevoIngrediente()" class="new-user btn btn-success pull-right">
+          <span>Agregar ingrediente</span>
+        </button>
+        <table st-table="plato.displayed" st-safe-src="plato.plato.ingredientes" class="table table-striped">
+          <thead>
+            <tr>
+              <th st-sort="producto">Producto</th>
+              <th st-sort="medida">Medida</th>
+              <th >Acciones</th>
+            </tr>
+            <tr>
+              <th colspan="5"><input st-search="" class="form-control" placeholder="Buscar..." type="text"/></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in plato.displayed">
+              <td editable-select="item.producto"
+                  e-name="producto" 
+                  e-form="rowform" 
+                  e-ng-options="producto as producto.nombre for producto in plato.productos"
+                  e-required
+                  onshow="plato.cargarProductos()">{{item.producto.nombre}}</td>
+              <td editable-number="item.medida" 
+                  e-name="medida" 
+                  e-form="rowform" 
+                  e-min="0"
+                  e-required>{{item.medida}}</td>
+              <td style="white-space: nowrap">
+                <form editable-form name="rowform" onbeforesave="plato.agregarIngrediente(item)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="plato.insertado === item">
+                  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                    save
+                  </button>
+                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                    cancel
+                  </button>
+                </form>
+                <div class="buttons" ng-show="!rowform.$visible">
+                  <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                  <button class="btn btn-danger" ng-click="plato.eliminar(item, $index)">del</button>
+                </div>  
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+
+    <div class="form-group form-actions">
+      <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
+        <a ng-click="plato.limpiarForm()" class="btn btn-default">Cancelar</a>
+        <button ng-click="plato.agregar()" type="submit" class="btn btn-success">Agregar</button>
+      </div>
+    </div>
+
+  </div>
+</div>

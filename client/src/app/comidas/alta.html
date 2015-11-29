@@ -1,0 +1,78 @@
+<div class="menubar">
+  <div class="sidebar-toggler visible-xs">
+    <i class="ion-navicon"></i>
+  </div>
+
+  <div class="page-title">Agregar un nuevo menu</div>
+
+</div>
+
+<div class="content-wrapper">
+  <div id="new-product" class="form-horizontal" name="comida.agregarForm" novalidate>
+
+    <div class="form-group">
+      <label class="col-sm-2 col-md-2 control-label">Nombre</label>
+      <div class="col-sm-10 col-md-8">
+        <input type="text" class="form-control" ng-model="comida.comida.nombre" name="nombre" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 col-md-2 control-label">Platos</label>
+      <div class="col-sm-10 col-md-8">
+        <button ng-click="comida.agregarNuevoPlato()" class="new-user btn btn-success pull-right">
+          <span>Agregar plato</span>
+        </button>
+        <table st-table="comida.displayed" st-safe-src="comida.comida.platos" class="table table-striped">
+          <thead>
+            <tr>
+              <th st-sort="plato">Plato</th>
+              <th st-sort="unidades">Unidades</th>
+              <th >Acciones</th>
+            </tr>
+            <tr>
+              <th colspan="5"><input st-search="" class="form-control" placeholder="Buscar..." type="text"/></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in comida.displayed">
+              <td editable-select="item.plato"
+                  e-name="plato" 
+                  e-form="rowform" 
+                  e-ng-options="plato as plato.nombre for plato in comida.platos"
+                  e-required
+                  onshow="comida.cargarPlatos()">{{item.plato.nombre}}</td>
+              <td editable-number="item.unidades" 
+                  e-name="unidades" 
+                  e-form="rowform" 
+                  e-min="0"
+                  e-required>{{item.unidades}}</td>
+              <td style="white-space: nowrap">
+                <form editable-form name="rowform" onbeforesave="comida.agregarPlato(item)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="comida.insertado === item">
+                  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                    save
+                  </button>
+                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                    cancel
+                  </button>
+                </form>
+                <div class="buttons" ng-show="!rowform.$visible">
+                  <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                  <button class="btn btn-danger" ng-click="comida.eliminar(item, $index)">del</button>
+                </div>  
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+
+    <div class="form-group form-actions">
+      <div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10">
+        <a ng-click="comida.limpiarForm()" class="btn btn-default">Cancelar</a>
+        <button ng-click="comida.agregar()" type="submit" class="btn btn-success">Agregar</button>
+      </div>
+    </div>
+
+  </div>
+</div>

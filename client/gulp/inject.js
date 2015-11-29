@@ -11,7 +11,11 @@ var _ = require('lodash');
 
 gulp.task('inject', ['scripts'], function () {
   var injectStyles = gulp.src([
-    path.join(conf.paths.src, '/app/**/*.css')
+    //path.join(conf.paths.src, '/app/**/*.css'),
+    path.join(conf.paths.src, '/assets/theme/css/compiled/*.css'),
+    path.join(conf.paths.src, '/assets/theme/css/bootstrap/bootstrap.min.css'),
+    path.join(conf.paths.src, '/assets/theme/css/vendor/*.css'),
+    path.join(conf.paths.src, '/assets/theme/css/vendor/**/*.css')
   ], { read: false });
 
   var injectScripts = gulp.src([
